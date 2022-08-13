@@ -20,8 +20,8 @@ namespace WinterJam2022.Scripts.Verses.Domain
 
         void RandomizeText()
         {
-            text.text = $"{DateTime.Now.Millisecond} this is a random VERB, believe me....";
-            wordType = WordType.VERB;
+            wordType = (WordType) UnityEngine.Random.Range(0, 3);
+            text.text = $"{DateTime.Now.Millisecond} this is a random {wordType}, believe me....";
         } 
 
         public bool VerifyWord(Word word)

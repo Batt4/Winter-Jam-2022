@@ -45,14 +45,17 @@ namespace WinterJam2022.Scripts.Presentation
             return new Card(word);
         }
 
-        void OnEnable() => OnCardPlayed += eventManager.PlayCard;
+        void OnEnable() {
+            eventManager = FindObjectOfType<EventManager>();
+            OnCardPlayed += eventManager.PlayCard;
+        }
 
         void OnDestroy() => OnCardPlayed -= eventManager.PlayCard;
 
         public void SelectCard()
         {
-            OnCardPlayed?.Invoke(this, CardPlayedArgs.Create(card));
-            Destroy(gameObject);
+            int PLAYER_ID = 1;
+            OnCardPlayed?.Invoke(this, CardPlayedArgs.Create(gameObject, card, PLAYER_ID));
         }
     }
 }

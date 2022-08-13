@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class Round
 {
-    
-    public PlayerRoundInfo player1;
-    public PlayerRoundInfo player2;
 
+    public int player1Followers;
+    public int totalFollowers;
+    public int currentPlayer;
+
+    public Round(int player1Followers, int totalFollowers) {
+        this.player1Followers = player1Followers;
+        this.totalFollowers = totalFollowers;
+        this.currentPlayer = 1;
+    }
+
+    public void UpdateFollowers(int deltaFollowers) {
+        this.player1Followers += deltaFollowers;
+    }
+
+    public void PassTurn() {
+        this.currentPlayer = this.currentPlayer == 1? 2: 1;
+    }
 
 }
