@@ -62,6 +62,7 @@
             <e p="Verses" t="Include">
               <e p="Domain" t="Include">
                 <e p="Verse.cs" t="Include" />
+                <e p="VerseGenerator.cs" t="Include" />
                 <e p="WordType.cs" t="Include" />
               </e>
             </e>
