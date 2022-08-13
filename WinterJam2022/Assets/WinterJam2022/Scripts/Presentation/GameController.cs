@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using WinterJam2022.Scripts.Verses.Domain;
 
@@ -8,6 +9,8 @@ namespace WinterJam2022.Scripts.Presentation
 
         [SerializeField] RectTransform panel;
         [SerializeField] GameObject versePrefab;
+
+        [SerializeField] EventManager eventManager;
         
         void OnEnable()
         {
@@ -18,10 +21,11 @@ namespace WinterJam2022.Scripts.Presentation
         { 
            var newVerse = Instantiate(versePrefab, panel);
            var verse = newVerse.GetComponent<Verse>();
-
-           verse.VerifyWord(new Word(WordType.SUBJECT));
-           verse.VerifyWord(new Word(WordType.ADJECTIVE));
-           verse.VerifyWord(new Word(WordType.VERB));
+           
+           eventManager.SetCurrentVerse(verse);
+         
         }
     }
+
+    
 }

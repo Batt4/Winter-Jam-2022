@@ -45,10 +45,11 @@
                 <e p="Card.cs" t="Include" />
                 <e p="CardEffect.cs" t="Include" />
                 <e p="CardEffectType.cs" t="Include" />
-                <e p="CardWithEffect.cs" t="Include" />
               </e>
             </e>
             <e p="Presentation" t="Include">
+              <e p="CardView.cs" t="Include" />
+              <e p="EventManager.cs" t="Include" />
               <e p="GameController.cs" t="Include" />
               <e p="Word.cs" t="Include" />
             </e>

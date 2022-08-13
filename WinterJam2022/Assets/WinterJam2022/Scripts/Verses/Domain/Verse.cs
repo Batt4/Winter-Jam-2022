@@ -12,7 +12,7 @@ namespace WinterJam2022.Scripts.Verses.Domain
         
         WordType wordType;
 
-
+        
         void OnEnable()
         {
             RandomizeText();
@@ -20,7 +20,7 @@ namespace WinterJam2022.Scripts.Verses.Domain
 
         void RandomizeText()
         {
-            text.text = $"{DateTime.Now.Millisecond} this is random, believe me....";
+            text.text = $"{DateTime.Now.Millisecond} this is a random VERB, believe me....";
             wordType = WordType.VERB;
         } 
 
