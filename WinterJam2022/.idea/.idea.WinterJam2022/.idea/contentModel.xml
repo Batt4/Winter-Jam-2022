@@ -48,6 +48,7 @@
               </e>
             </e>
             <e p="Presentation" t="Include">
+              <e p="CardPlayedArgs.cs" t="Include" />
               <e p="CardView.cs" t="Include" />
               <e p="EventManager.cs" t="Include" />
               <e p="FollowersView.cs" t="Include" />

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 using WinterJam2022.Scripts.Verses.Domain;
 
 namespace WinterJam2022.Scripts.Presentation
@@ -17,6 +16,8 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] GameObject cardViewTemplate;
 
         [SerializeField] int TIMEOUT_PENALTY = 8;
+
+        Word lastCorrectWord = new Word(WordType.VERB, "",0,"");
         
         void Start() 
         {
@@ -39,11 +40,24 @@ namespace WinterJam2022.Scripts.Presentation
             
             if (currentVerse.VerifyWord(card.Word))
             {
-                UpdateRoundFollowers(card.Word.Points * scoreMultiplier);
+                var rhymeScore = 0;
+                scoreMultiplier += round.GetCurrentCombo();
+
+                if (lastCorrectWord.RhymesWith(card.Word))
+                {
+                    Debug.Log("THE WORDS RHYME");
+                    rhymeScore = 15;
+                }
+                 
+                UpdateRoundFollowers( rhymeScore + card.Word.Points * scoreMultiplier);
+                round.AddToCombo();
+                lastCorrectWord = card.Word;
             }
             else
             {
+                lastCorrectWord = new Word(WordType.VERB, "",0,"");
                 UpdateRoundFollowers(-card.Word.Points * scoreMultiplier);
+                round.ResetCombo();
             }
 
             Destroy(cardGameObject);
@@ -52,7 +66,7 @@ namespace WinterJam2022.Scripts.Presentation
             Debug.Log($"Card played: {card}");
         }
 
-        int HandleSpecialCards(Card card)
+        double HandleSpecialCards(Card card)
         {
             switch (card.Special)
             {
@@ -69,7 +83,6 @@ namespace WinterJam2022.Scripts.Presentation
                     GetNewCardFromDeck();
                     GetNewCardFromDeck();
                     break;
-                
             }
 
             return 1;
@@ -122,6 +135,8 @@ namespace WinterJam2022.Scripts.Presentation
             if (round.currentPlayer == 1) Instantiate(cardViewTemplate, cardsContainer);
         }
 
+        void UpdateRoundFollowers(double points) => UpdateRoundFollowers(Convert.ToInt32(points));
+
         void UpdateRoundFollowers(int points) {
             round.UpdateFollowers(points);
             followersView.UpdateFollowers(round.player1Followers, round.totalFollowers);
@@ -134,21 +149,6 @@ namespace WinterJam2022.Scripts.Presentation
         bool IsThePlayerRound() {
             return this.round == null || this.round.currentPlayer == 1;
         }
-    }
-    
-    public class CardPlayedArgs : EventArgs
-    {
-        public readonly GameObject CardObject;
-        public readonly Card Card;
-        public readonly int Player;
-
-        CardPlayedArgs(GameObject cardObject, Card card, int player) {
-            CardObject = cardObject;
-            Card = card;
-            Player = player;
-        } 
-
-        public static CardPlayedArgs Create(GameObject cardObject, Card card, int player) => new CardPlayedArgs(cardObject, card, player);
     }
 }
 

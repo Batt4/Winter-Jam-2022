@@ -9,6 +9,7 @@ public class Round
     public int totalFollowers;
     public int currentPlayer;
     public bool finished;
+    int combo;
 
     public Round(int player1Followers, int totalFollowers) {
         this.player1Followers = player1Followers;
@@ -16,6 +17,12 @@ public class Round
         this.currentPlayer = 1;
     }
 
+    public void AddToCombo() => combo++;
+
+    public void ResetCombo() => combo = 0;
+
+    public double GetCurrentCombo() => combo * 0.2;
+    
     public void UpdateFollowers(int deltaFollowers) {
         this.player1Followers += deltaFollowers;
     }
