@@ -823,7 +823,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000061035, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 247.39}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &175897341
 MonoBehaviour:
@@ -841,16 +841,16 @@ MonoBehaviour:
     m_Left: 10
     m_Right: 0
     m_Top: 0
-    m_Bottom: 50
+    m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: -120
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ReverseArrangement: 1
 --- !u!1 &193182921
 GameObject:
   m_ObjectHideFlags: 0
@@ -8158,6 +8158,7 @@ GameObject:
   - component: {fileID: 2115775020}
   - component: {fileID: 2115775022}
   - component: {fileID: 2115775021}
+  - component: {fileID: 2115775023}
   m_Layer: 5
   m_Name: nombre_jugador
   m_TagString: Untagged
@@ -8268,7 +8269,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -1.5479889, y: 0, z: 0, w: 0}
+  m_margin: {x: -1.5479889, y: 0, z: -100.32483, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8282,6 +8283,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115775019}
   m_CullTransparentMesh: 1
+--- !u!114 &2115775023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115775019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b682caede54e6e9b6e348c549ffa3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentName: {fileID: 1950174948}
 --- !u!1001 &1531675811681774065
 PrefabInstance:
   m_ObjectHideFlags: 0
