@@ -58,8 +58,8 @@ namespace WinterJam2022.Scripts.Verses.Domain
                 displayPuntajeSombra.text = "+" + puntaje.ToString();
             } else {
                 displayPuntaje.color = puntajeNegativoColor;
-                displayPuntaje.text = "+" + puntaje.ToString();
-                displayPuntajeSombra.text = "+" + puntaje.ToString();
+                displayPuntaje.text = puntaje.ToString();
+                displayPuntajeSombra.text = puntaje.ToString();
             }
         }
     }

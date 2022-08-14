@@ -31,7 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9125972650424320243}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -104,7 +104,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9125972650424320243}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20.923}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -239,7 +239,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9125972650424320243}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20.923}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -374,7 +374,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9125972650424320243}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -436,10 +436,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
+  m_fontSize: 36.55
   m_fontSizeBase: 32
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -509,10 +509,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3570499524299536700}
   - {fileID: 9125972650417138753}
   - {fileID: 8024102783639136242}
   - {fileID: 9035806988175482578}
-  - {fileID: 3570499524299536700}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -547,9 +547,9 @@ MonoBehaviour:
   displayPuntaje: {fileID: 4996337412614709137}
   displayPuntajeSombra: {fileID: 7706504765833546971}
   overlay: {fileID: 9138133015785106841}
-  verbColor: {r: 0.8018868, g: 0.19290671, b: 0.19290671, a: 0}
-  subjectColor: {r: 0.2874385, g: 0.7169812, b: 0.1792453, a: 0}
-  adjectiveColor: {r: 0.20754717, g: 0.28627816, b: 0.8301887, a: 0}
+  verbColor: {r: 0.8018868, g: 0.19290671, b: 0.19290671, a: 1}
+  subjectColor: {r: 0.2874385, g: 0.7169812, b: 0.1792453, a: 1}
+  adjectiveColor: {r: 0.20754717, g: 0.28627816, b: 0.8301887, a: 1}
 --- !u!114 &6764593831837112849
 MonoBehaviour:
   m_ObjectHideFlags: 0
