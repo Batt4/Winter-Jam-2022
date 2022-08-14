@@ -4076,8 +4076,6 @@ MonoBehaviour:
   screenController: {fileID: 1706590075}
   roundsController: {fileID: 1706590076}
   TIMEOUT_PENALTY: 8
-  puntajePositivoColor: {r: 1, g: 0.69803923, b: 0, a: 1}
-  puntajeNegativoColor: {r: 0.9254902, g: 0.10980392, b: 0.10980392, a: 1}
 --- !u!1 &1139332320
 GameObject:
   m_ObjectHideFlags: 0
@@ -6351,6 +6349,7 @@ MonoBehaviour:
   gameController: {fileID: 1177124959}
   timerView: {fileID: 624977612}
   followersView: {fileID: 985472407}
+  nameGenerator: {fileID: 1950174950}
 --- !u!1 &1711472014
 GameObject:
   m_ObjectHideFlags: 0
