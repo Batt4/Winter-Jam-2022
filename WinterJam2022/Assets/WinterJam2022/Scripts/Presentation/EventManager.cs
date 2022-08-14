@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using WinterJam2022.Scripts.Verses.Domain;
 
@@ -17,6 +18,9 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] ScreenController screenController;
         [SerializeField] RoundsController roundsController;
 
+        [SerializeField] AudioSource audioSource;
+        [SerializeField] List<AudioClip> clipWrong;
+ 
         [SerializeField] int TIMEOUT_PENALTY = 8;
 
         Word lastCorrectWord = new Word(WordType.VERB, "",0,"");
@@ -69,6 +73,7 @@ namespace WinterJam2022.Scripts.Presentation
             }
             else
             {
+                PlayWrongSfx();
                 lastCorrectWord = new Word(WordType.VERB, "",0,"");
                 UpdateRoundFollowers(-card.Word.Points * scoreMultiplier);
                 round.ResetCombo();
@@ -80,6 +85,12 @@ namespace WinterJam2022.Scripts.Presentation
             PassTurn();
             
             Debug.Log($"Card played: {card}");
+        }
+
+        void PlayWrongSfx()
+        {
+           var clip =  clipWrong.PickOne();
+           audioSource.PlayOneShot(clip);
         }
 
         double HandleSpecialCards(Card card)

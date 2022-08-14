@@ -61,6 +61,10 @@
               <e p="Domain" t="Include">
                 <e p="Round.cs" t="Include" />
               </e>
+              <e p="RoundsController.cs" t="Include" />
+            </e>
+            <e p="Screens" t="Include">
+              <e p="ScreenController.cs" t="Include" />
             </e>
             <e p="Verses" t="Include">
               <e p="Domain" t="Include">
