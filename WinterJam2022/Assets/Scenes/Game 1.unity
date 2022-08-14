@@ -4343,8 +4343,12 @@ MonoBehaviour:
   cardViewTemplate: {fileID: 1531675813161944992, guid: 9822c2cd0bb3642b3b87603b14bcbb53, type: 3}
   screenController: {fileID: 1706590075}
   roundsController: {fileID: 1706590076}
-  audioSource: {fileID: 0}
-  clipWrong: []
+  audioSource: {fileID: 821692927}
+  clipWrong:
+  - {fileID: 8300000, guid: 7063187d33a8645c2b27919f649df5ce, type: 3}
+  - {fileID: 8300000, guid: 6b19d1b2a6f5c4e35a6f3cd891707645, type: 3}
+  - {fileID: 8300000, guid: 9de56d174c3c74b1c82c495dbb6aa668, type: 3}
+  - {fileID: 8300000, guid: 00b410795e3c24dfb8b4bc1cd74707ea, type: 3}
   TIMEOUT_PENALTY: 8
 --- !u!1 &1139332320
 GameObject:
