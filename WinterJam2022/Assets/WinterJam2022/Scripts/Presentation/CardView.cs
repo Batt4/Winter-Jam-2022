@@ -52,9 +52,9 @@ namespace WinterJam2022.Scripts.Presentation
                 case Effect.x3:
                     return "X3";
                 case Effect.DrawOneExtra:
-                    return "1 Xtra";
+                    return "+1 Xtra";
                 case Effect.DrawTwoExtra:
-                    return "2 Xtra";
+                    return "+2 Xtra";
             }
             return "";
         }
