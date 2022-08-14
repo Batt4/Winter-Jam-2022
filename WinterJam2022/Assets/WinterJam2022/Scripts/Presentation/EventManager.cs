@@ -80,6 +80,7 @@ namespace WinterJam2022.Scripts.Presentation
 
                 currentVerse.ShowPoints(Convert.ToInt32(- card.Word.Points * scoreMultiplier));
             }
+            currentVerse.UpdateHiddenText(card.Word.Text);
 
             Destroy(cardGameObject);
             PassTurn();

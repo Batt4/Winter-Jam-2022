@@ -62,5 +62,9 @@ namespace WinterJam2022.Scripts.Verses.Domain
                 displayPuntajeSombra.text = puntaje.ToString();
             }
         }
+
+        public void UpdateHiddenText(string word) {
+            text.text = text.text.Replace("......", word.ToLower());
+        }
     }
 }

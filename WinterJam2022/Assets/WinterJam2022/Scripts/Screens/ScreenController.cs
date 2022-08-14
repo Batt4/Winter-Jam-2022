@@ -56,4 +56,9 @@ public class ScreenController : MonoBehaviour
         loseScreen.SetActive(true);
     }
 
+    public void QuitGame() {
+        Debug.Log("Salió el juegazo");
+        Application.Quit();
+    }
+
 }
