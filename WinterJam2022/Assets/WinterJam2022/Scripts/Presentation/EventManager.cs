@@ -14,6 +14,7 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] TimerView timerView;
         [SerializeField] RectTransform cardsContainer;
         [SerializeField] GameObject cardViewTemplate;
+        [SerializeField] ScreenController screenController;
 
         [SerializeField] int TIMEOUT_PENALTY = 8;
 
@@ -22,6 +23,13 @@ namespace WinterJam2022.Scripts.Presentation
         void Start() 
         {
             round = new Round(10, 20); // Mock Round
+        }
+
+        void Update() {
+            if (Input.GetButton("Pause")) {
+                Debug.Log("Paused game");
+                screenController.PauseGame();
+            }
         }
 
         public void PlayCard(object sender, EventArgs args)
@@ -127,8 +135,12 @@ namespace WinterJam2022.Scripts.Presentation
             this.round.finished = true;
             timerView.CloseTime();
 
-            string winnerPlayer = this.round.player1Followers < this.round.totalFollowers / 2 ? "ENEMY": "PLAYER";
+            bool isThePlayerTheWinner = this.round.player1Followers >= this.round.totalFollowers / 2;
+            string winnerPlayer = isThePlayerTheWinner ? "PLAYER": "ENEMY";
             Debug.Log($"Finishing round. {winnerPlayer} is the Winner!");
+            
+            if (isThePlayerTheWinner) screenController.WinScreen();
+            else screenController.LoseScreen();
         }
 
         void GetNewCardFromDeck() {
