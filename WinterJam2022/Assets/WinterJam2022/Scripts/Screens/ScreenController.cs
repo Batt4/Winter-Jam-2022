@@ -11,20 +11,26 @@ public class ScreenController : MonoBehaviour
     [SerializeField] GameObject loseScreen;
     [SerializeField] GameObject winScreen;
 
+    [SerializeField] RoundsController roundsController;
+
     public void StartGame() {
+        Time.timeScale = 1;
         menuScreen.SetActive(false);
-        gameScreen.SetActive(true);
+        roundsController.ResetLevels();
+        roundsController.StartRound();
     }
 
     public void BackToGame() {
-        gameScreen.SetActive(true);
+        Time.timeScale = 1;
+        roundsController.StartRound();
         loseScreen.SetActive(false);
         winScreen.SetActive(false);
     }
 
     public void ReturnsMainMenu() {
+        Time.timeScale = 1;
+        roundsController.ResetLevels();
         menuScreen.SetActive(true);
-        gameScreen.SetActive(false);
         pauseScreen.SetActive(false);
         loseScreen.SetActive(false);
         winScreen.SetActive(false);
@@ -41,12 +47,12 @@ public class ScreenController : MonoBehaviour
     }
 
     public void WinScreen() {
-        gameScreen.SetActive(false);
+        roundsController.NextLevel();
         winScreen.SetActive(true);
     }
 
     public void LoseScreen() {
-        gameScreen.SetActive(false);
+        roundsController.ResetLevels();
         loseScreen.SetActive(true);
     }
 

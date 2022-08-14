@@ -17,11 +17,18 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] EventManager eventManager;
 
         int currentVerse;
-        [SerializeField] int totalVerses = 6;
+        [SerializeField] int totalVerses;
         
         void Start()
         {
-            CreateVerse();
+        }
+
+        public void NewRoundInformation(Round round) {
+            this.currentVerse = 0;
+            this.totalVerses = round.quantityOfVerses;
+            foreach (Transform child in panel.transform) {
+                GameObject.Destroy(child.gameObject);
+            }
         }
 
         public void CreateVerse()

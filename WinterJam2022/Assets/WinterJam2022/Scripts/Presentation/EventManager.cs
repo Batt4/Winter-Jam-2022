@@ -15,6 +15,7 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] RectTransform cardsContainer;
         [SerializeField] GameObject cardViewTemplate;
         [SerializeField] ScreenController screenController;
+        [SerializeField] RoundsController roundsController;
 
         [SerializeField] int TIMEOUT_PENALTY = 8;
 
@@ -22,14 +23,17 @@ namespace WinterJam2022.Scripts.Presentation
         
         void Start() 
         {
-            round = new Round(10, 20); // Mock Round
         }
 
         void Update() {
-            //if (Input.GetButton("Pause")) {
-            //    Debug.Log("Paused game");
-            //    screenController.PauseGame();
-            //}
+            if (Input.GetKey(KeyCode.Escape)) {
+                Debug.Log("Paused game");
+                screenController.PauseGame();
+            }
+        }
+
+        public void NewRoundInformation(Round round) {
+            this.round = round;
         }
 
         public void PlayCard(object sender, EventArgs args)
@@ -57,7 +61,7 @@ namespace WinterJam2022.Scripts.Presentation
                     rhymeScore = 15;
                 }
                  
-                UpdateRoundFollowers( rhymeScore + card.Word.Points * scoreMultiplier);
+                UpdateRoundFollowers(rhymeScore + card.Word.Points * scoreMultiplier);
                 round.AddToCombo();
                 lastCorrectWord = card.Word;
             }
@@ -139,8 +143,14 @@ namespace WinterJam2022.Scripts.Presentation
             string winnerPlayer = isThePlayerTheWinner ? "PLAYER": "ENEMY";
             Debug.Log($"Finishing round. {winnerPlayer} is the Winner!");
             
-            if (isThePlayerTheWinner) screenController.WinScreen();
-            else screenController.LoseScreen();
+            if (isThePlayerTheWinner) {
+                roundsController.NextLevel();
+                screenController.WinScreen();
+            }
+            else {
+                roundsController.ResetLevels();
+                screenController.LoseScreen();
+            }
         }
 
         void GetNewCardFromDeck() {
