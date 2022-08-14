@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 
 namespace WinterJam2022.Scripts.Verses.Domain
 {
-    public class VerseGenerator
+    public static class VerseGenerator
     {
-        readonly List<VerseContent> verses = new List<VerseContent>()
+        static readonly List<VerseContent> verses = new List<VerseContent>()
         {
             new VerseContent("Creo que les va a gustar esta %", WordType.SUBJECT),
             new VerseContent("Quiero que % cuando suene esta canción ", WordType.VERB),
@@ -24,7 +23,7 @@ namespace WinterJam2022.Scripts.Verses.Domain
             new VerseContent("Hechos picadillo, pedacitos, así quedó tu %", WordType.SUBJECT)
         };
 
-        public VerseContent GetVerse() => verses.PickOne();
+        public static VerseContent GetVerse() => verses.PickOne();
     }
 
     public class VerseContent
@@ -38,11 +37,4 @@ namespace WinterJam2022.Scripts.Verses.Domain
             RequiredWord = requiredWord;
         }
     }
-
-    public static class ListExtensions
-    {
-        static readonly Random random = new Random();
-        
-        public static T PickOne<T>(this List<T> source) => source[random.Next(source.Count)];
-    } 
 }

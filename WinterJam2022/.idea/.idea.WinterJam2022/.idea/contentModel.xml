@@ -48,19 +48,24 @@
               </e>
             </e>
             <e p="Presentation" t="Include">
+              <e p="CardPlayedArgs.cs" t="Include" />
               <e p="CardView.cs" t="Include" />
               <e p="EventManager.cs" t="Include" />
+              <e p="FollowersView.cs" t="Include" />
               <e p="GameController.cs" t="Include" />
+              <e p="TimerView.cs" t="Include" />
               <e p="Word.cs" t="Include" />
             </e>
             <e p="Rounds" t="Include">
               <e p="Domain" t="Include">
-                <e p="PlayerRoundInfo.cs" t="Include" />
                 <e p="Round.cs" t="Include" />
               </e>
             </e>
             <e p="Verses" t="Include">
               <e p="Domain" t="Include">
+                <e p="Effect.cs" t="Include" />
+                <e p="ListExtensions.cs" t="Include" />
+                <e p="ProbabilityHelper.cs" t="Include" />
                 <e p="Verse.cs" t="Include" />
                 <e p="VerseGenerator.cs" t="Include" />
                 <e p="WordType.cs" t="Include" />

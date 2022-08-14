@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 using WinterJam2022.Scripts.Verses.Domain;
 
 namespace WinterJam2022.Scripts.Presentation
@@ -8,7 +7,7 @@ namespace WinterJam2022.Scripts.Presentation
     public class EventManager : MonoBehaviour
     {
 
-        Verse CurrentVerse;
+        Verse currentVerse;
         Round round;
         [SerializeField] GameController gameController;
         [SerializeField] FollowersView followersView;
@@ -16,84 +15,140 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] RectTransform cardsContainer;
         [SerializeField] GameObject cardViewTemplate;
 
-        private const int TIMEOUT_PENALTY = 8;
+        [SerializeField] int TIMEOUT_PENALTY = 8;
+
+        Word lastCorrectWord = new Word(WordType.VERB, "",0,"");
         
-        private void Start() 
+        void Start() 
         {
-            round = new Round(50, 100); // Mock Round
+            round = new Round(10, 20); // Mock Round
         }
 
         public void PlayCard(object sender, EventArgs args)
         {
-            var playerThatPlayedTheCard = ((CardPlayedArgs)args).player;
-            if (CurrentVerse == null || round.currentPlayer != playerThatPlayedTheCard) {
+            var playedCard = (CardPlayedArgs)args;
+            var currentPlayer = playedCard.Player;
+           
+            if (CantPlayCard(currentPlayer)) {
                 Debug.LogWarning("Card wasn't able to be played yet.");
                 return;
             }
+            var card = playedCard.Card;
+            var cardGameObject = playedCard.CardObject;
 
-            var card = ((CardPlayedArgs)args).Card;
-            var cardObject = ((CardPlayedArgs)args).cardObject;
-            bool cardWasOk = CurrentVerse.VerifyWord(card.Word);
-            UpdateRoundFollowers(card.Word.Points * (cardWasOk? 1: -1));
-            Destroy(cardObject);
+            var scoreMultiplier = HandleSpecialCards(card);
+            
+            if (currentVerse.VerifyWord(card.Word))
+            {
+                var rhymeScore = 0;
+                scoreMultiplier += round.GetCurrentCombo();
+
+                if (lastCorrectWord.RhymesWith(card.Word))
+                {
+                    Debug.Log("THE WORDS RHYME");
+                    rhymeScore = 15;
+                }
+                 
+                UpdateRoundFollowers( rhymeScore + card.Word.Points * scoreMultiplier);
+                round.AddToCombo();
+                lastCorrectWord = card.Word;
+            }
+            else
+            {
+                lastCorrectWord = new Word(WordType.VERB, "",0,"");
+                UpdateRoundFollowers(-card.Word.Points * scoreMultiplier);
+                round.ResetCombo();
+            }
+
+            Destroy(cardGameObject);
             PassTurn();
+            
             Debug.Log($"Card played: {card}");
+        }
+
+        double HandleSpecialCards(Card card)
+        {
+            switch (card.Special)
+            {
+                case Effect.None:
+                    break;
+                case Effect.x2:
+                    return 2;
+                case Effect.x3:
+                    return 3;
+                case Effect.DrawOneExtra:
+                    GetNewCardFromDeck();
+                    break;
+                case Effect.DrawTwoExtra:
+                    GetNewCardFromDeck();
+                    GetNewCardFromDeck();
+                    break;
+            }
+
+            return 1;
+        }
+
+        bool CantPlayCard(int playerThatPlayedTheCard)
+        {
+            return currentVerse == null || round.currentPlayer != playerThatPlayedTheCard;
         }
 
         public void SetCurrentVerse(Verse verse)
         {
-            CurrentVerse = verse;
-            timerView.RestartTime();
+            currentVerse = verse;
+            timerView.RestartTime(IsThePlayerRound());
             Debug.Log($"Current verse: {verse}");
         }
 
         public void Timeout() {
-            UpdateRoundFollowers(TIMEOUT_PENALTY * (round.currentPlayer != 1? 1: -1));
+            if (IsThePlayerRound()) UpdateRoundFollowers(-TIMEOUT_PENALTY);
             PassTurn();
         }
 
-        public void PassTurn() {
+        void PassTurn() {
+            if (this.round.finished) {
+                return;
+            }
+
             round.PassTurn();
             GetNewCardFromDeck();
-            gameController.CreateVerse();
+            if (IsThePlayerRound()) 
+                gameController.CreateVerse();
+            
+            if (!round.finished) 
+            {
+                timerView.RestartTime(IsThePlayerRound());
+            }
         }
 
         public void FinishRound()
         {
-            string winnerPlayer = "PLAYER";
-            if (this.round.player1Followers < this.round.totalFollowers / 2)
-                winnerPlayer = "ENEMY";
-            Debug.Log($"Finishing round. {winnerPlayer} is the Winner!");
             this.round.currentPlayer = 0;
-            //Application.Quit();
+            this.round.finished = true;
+            timerView.CloseTime();
+
+            string winnerPlayer = this.round.player1Followers < this.round.totalFollowers / 2 ? "ENEMY": "PLAYER";
+            Debug.Log($"Finishing round. {winnerPlayer} is the Winner!");
         }
 
         void GetNewCardFromDeck() {
             if (round.currentPlayer == 1) Instantiate(cardViewTemplate, cardsContainer);
         }
 
+        void UpdateRoundFollowers(double points) => UpdateRoundFollowers(Convert.ToInt32(points));
+
         void UpdateRoundFollowers(int points) {
             round.UpdateFollowers(points);
             followersView.UpdateFollowers(round.player1Followers, round.totalFollowers);
-            if (round.player1Followers >= round.totalFollowers) {
+            bool winLoseCondition = round.player1Followers <= 0 || round.player1Followers >= round.totalFollowers;
+            if (winLoseCondition) {
                 FinishRound();
             }
         }
-    }
-    
-    public class CardPlayedArgs : EventArgs
-    {
-        public readonly GameObject cardObject;
-        public readonly Card Card;
-        public readonly int player;
 
-        CardPlayedArgs(GameObject cardObject, Card card, int player) {
-            this.cardObject = cardObject;
-            this.Card = card;
-            this.player = player;
-        } 
-
-        public static CardPlayedArgs Create(GameObject cardObject, Card card, int player) => new CardPlayedArgs(cardObject, card, player);
+        bool IsThePlayerRound() {
+            return this.round == null || this.round.currentPlayer == 1;
+        }
     }
 }
 
