@@ -102,6 +102,10 @@ namespace WinterJam2022.Scripts.Presentation
         {
             opponentName.text = availableNames.PickOne();
         }
+
+        public void NewName() {
+            opponentName.text = availableNames.PickOne();
+        }
         
     }
 }

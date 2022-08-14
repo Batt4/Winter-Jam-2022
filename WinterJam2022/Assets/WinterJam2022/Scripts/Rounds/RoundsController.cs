@@ -21,6 +21,7 @@ public class RoundsController : MonoBehaviour
     [SerializeField] GameController gameController;
     [SerializeField] TimerView timerView;
     [SerializeField] FollowersView followersView;
+    [SerializeField] NameGenerator nameGenerator;
 
     void Start() {
         this.initialRound = new Round(firstRound);
@@ -60,6 +61,7 @@ public class RoundsController : MonoBehaviour
         timerView.UpdateTimers(round.timerPlayer, 0.2f);
         gameController.NewRoundInformation(round);
         eventManager.NewRoundInformation(round);
+        nameGenerator.NewName();
         timerView.RestartTime(true);
         followersView.UpdateFollowers(round.player1Followers, round.totalFollowers);
         gameController.CreateVerse();
