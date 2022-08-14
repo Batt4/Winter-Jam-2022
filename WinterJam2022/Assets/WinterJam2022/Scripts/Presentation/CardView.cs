@@ -22,6 +22,7 @@ namespace WinterJam2022.Scripts.Presentation
         readonly List<string> wordsVerb = new List<string>()
         {
             "Abrir",
+            "Rapeo"
             "Amar",
             "Asesinar",
             "Bastar",
@@ -226,6 +227,7 @@ namespace WinterJam2022.Scripts.Presentation
             availableWords = new List<Word>
             {
                 new Word(WordType.SUBJECT, "Crema", Random.Range(1, 15), "ma"),
+                new Word(WordType.SUBJECT, "Rapero", Random.Range(1, 15), "ro"),
                 new Word(WordType.SUBJECT, "Explosión", Random.Range(1, 15), "sión"),
                 new Word(WordType.SUBJECT, "Navaja", Random.Range(1, 15), "ja"),
                 new Word(WordType.SUBJECT, "Lápiz", Random.Range(1, 15), "piz"),
