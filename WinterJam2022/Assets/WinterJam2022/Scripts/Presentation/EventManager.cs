@@ -8,7 +8,7 @@ namespace WinterJam2022.Scripts.Presentation
     public class EventManager : MonoBehaviour
     {
 
-        Verse CurrentVerse;
+        Verse currentVerse;
         Round round;
         [SerializeField] GameController gameController;
         [SerializeField] FollowersView followersView;
@@ -18,32 +18,71 @@ namespace WinterJam2022.Scripts.Presentation
 
         [SerializeField] int TIMEOUT_PENALTY = 8;
         
-        private void Start() 
+        void Start() 
         {
             round = new Round(10, 20); // Mock Round
         }
 
         public void PlayCard(object sender, EventArgs args)
         {
-            var playerThatPlayedTheCard = ((CardPlayedArgs)args).player;
-            if (CurrentVerse == null || round.currentPlayer != playerThatPlayedTheCard) {
+            var playedCard = (CardPlayedArgs)args;
+            var currentPlayer = playedCard.Player;
+           
+            if (CantPlayCard(currentPlayer)) {
                 Debug.LogWarning("Card wasn't able to be played yet.");
                 return;
             }
+            var card = playedCard.Card;
+            var cardGameObject = playedCard.CardObject;
 
-            var card = ((CardPlayedArgs)args).Card;
-            var cardObject = ((CardPlayedArgs)args).cardObject;
-            bool cardWasOk = CurrentVerse.VerifyWord(card.Word);
+            var scoreMultiplier = HandleSpecialCards(card);
+            
+            if (currentVerse.VerifyWord(card.Word))
+            {
+                UpdateRoundFollowers(card.Word.Points * scoreMultiplier);
+            }
+            else
+            {
+                UpdateRoundFollowers(-card.Word.Points * scoreMultiplier);
+            }
 
-            UpdateRoundFollowers(cardWasOk? card.Word.Points: -card.Word.Points);
-            Destroy(cardObject);
+            Destroy(cardGameObject);
             PassTurn();
+            
             Debug.Log($"Card played: {card}");
+        }
+
+        int HandleSpecialCards(Card card)
+        {
+            switch (card.Special)
+            {
+                case Effect.None:
+                    break;
+                case Effect.x2:
+                    return 2;
+                case Effect.x3:
+                    return 3;
+                case Effect.DrawOneExtra:
+                    GetNewCardFromDeck();
+                    break;
+                case Effect.DrawTwoExtra:
+                    GetNewCardFromDeck();
+                    GetNewCardFromDeck();
+                    break;
+                
+            }
+
+            return 1;
+        }
+
+        bool CantPlayCard(int playerThatPlayedTheCard)
+        {
+            return currentVerse == null || round.currentPlayer != playerThatPlayedTheCard;
         }
 
         public void SetCurrentVerse(Verse verse)
         {
-            CurrentVerse = verse;
+            currentVerse = verse;
             timerView.RestartTime(IsThePlayerRound());
             Debug.Log($"Current verse: {verse}");
         }
@@ -60,8 +99,11 @@ namespace WinterJam2022.Scripts.Presentation
 
             round.PassTurn();
             GetNewCardFromDeck();
-            if (IsThePlayerRound()) gameController.CreateVerse();
-            if (!this.round.finished) {
+            if (IsThePlayerRound()) 
+                gameController.CreateVerse();
+            
+            if (!round.finished) 
+            {
                 timerView.RestartTime(IsThePlayerRound());
             }
         }
@@ -72,7 +114,7 @@ namespace WinterJam2022.Scripts.Presentation
             this.round.finished = true;
             timerView.CloseTime();
 
-            string winnerPlayer = this.round.player1Followers < this.round.totalFollowers / 2? "ENEMY": "PLAYER";
+            string winnerPlayer = this.round.player1Followers < this.round.totalFollowers / 2 ? "ENEMY": "PLAYER";
             Debug.Log($"Finishing round. {winnerPlayer} is the Winner!");
         }
 
@@ -96,14 +138,14 @@ namespace WinterJam2022.Scripts.Presentation
     
     public class CardPlayedArgs : EventArgs
     {
-        public readonly GameObject cardObject;
+        public readonly GameObject CardObject;
         public readonly Card Card;
-        public readonly int player;
+        public readonly int Player;
 
         CardPlayedArgs(GameObject cardObject, Card card, int player) {
-            this.cardObject = cardObject;
-            this.Card = card;
-            this.player = player;
+            CardObject = cardObject;
+            Card = card;
+            Player = player;
         } 
 
         public static CardPlayedArgs Create(GameObject cardObject, Card card, int player) => new CardPlayedArgs(cardObject, card, player);

@@ -16,10 +16,10 @@ namespace WinterJam2022.Scripts.Presentation
 
         [SerializeField] EventManager eventManager;
 
-        private int currentVerse;
+        int currentVerse;
         [SerializeField] int totalVerses = 6;
         
-        void OnEnable()
+        void Start()
         {
             CreateVerse();
         }
@@ -27,6 +27,7 @@ namespace WinterJam2022.Scripts.Presentation
         public void CreateVerse()
         {
             Debug.Log($"Verses: {currentVerse}/{totalVerses}.");
+            
             if (currentVerse >= totalVerses) {
                 eventManager.FinishRound();
                 return;

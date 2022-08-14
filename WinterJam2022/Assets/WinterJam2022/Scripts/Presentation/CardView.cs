@@ -11,6 +11,7 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] EventManager eventManager;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] TextMeshProUGUI points;
+        [SerializeField] TextMeshProUGUI special;
 
         List<Word> availableWords;
         
@@ -37,6 +38,25 @@ namespace WinterJam2022.Scripts.Presentation
             card = GetCardFromDeck();
             text.text = card.Word.Text;
             points.text = card.Word.Points.ToString();
+            special.text = SpecialToString(card.Special);
+        }
+
+        string SpecialToString(Effect cardSpecial)
+        {
+            switch (cardSpecial)
+            {
+                case Effect.None:
+                    return "";
+                case Effect.x2:
+                    return "X2";
+                case Effect.x3:
+                    return "X3";
+                case Effect.DrawOneExtra:
+                    return "1 Xtra";
+                case Effect.DrawTwoExtra:
+                    return "2 Xtra";
+            }
+            return "";
         }
 
         Card GetCardFromDeck()
