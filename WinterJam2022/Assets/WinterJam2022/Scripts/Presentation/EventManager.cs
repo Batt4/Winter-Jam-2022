@@ -26,10 +26,10 @@ namespace WinterJam2022.Scripts.Presentation
         }
 
         void Update() {
-            if (Input.GetButton("Pause")) {
-                Debug.Log("Paused game");
-                screenController.PauseGame();
-            }
+            //if (Input.GetButton("Pause")) {
+            //    Debug.Log("Paused game");
+            //    screenController.PauseGame();
+            //}
         }
 
         public void PlayCard(object sender, EventArgs args)
