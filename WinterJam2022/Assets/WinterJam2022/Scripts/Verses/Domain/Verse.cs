@@ -51,7 +51,7 @@ namespace WinterJam2022.Scripts.Verses.Domain
             return result;
         }
 
-        public void ShowPoints(double puntaje) {
+        public void ShowPoints(int puntaje) {
             if (puntaje >= 0) {
                 displayPuntaje.color = puntajePositivoColor;
                 displayPuntaje.text = "+" + puntaje.ToString();

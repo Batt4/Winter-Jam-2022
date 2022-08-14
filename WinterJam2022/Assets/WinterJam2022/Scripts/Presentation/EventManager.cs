@@ -65,7 +65,7 @@ namespace WinterJam2022.Scripts.Presentation
                 round.AddToCombo();
                 lastCorrectWord = card.Word;
 
-                currentVerse.ShowPoints(rhymeScore + card.Word.Points * scoreMultiplier);
+                currentVerse.ShowPoints(Convert.ToInt32(rhymeScore + card.Word.Points * scoreMultiplier));
             }
             else
             {
@@ -73,7 +73,7 @@ namespace WinterJam2022.Scripts.Presentation
                 UpdateRoundFollowers(-card.Word.Points * scoreMultiplier);
                 round.ResetCombo();
 
-                currentVerse.ShowPoints(- card.Word.Points * scoreMultiplier);
+                currentVerse.ShowPoints(Convert.ToInt32(- card.Word.Points * scoreMultiplier));
             }
 
             Destroy(cardGameObject);
