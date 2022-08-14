@@ -1976,7 +1976,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281348334
-  m_fontColor: {r: 0.9339623, g: 0.18943575, b: 0.18943575, a: 1}
+  m_fontColor: {r: 0.9254902, g: 0.10980392, b: 0.10980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3940,6 +3940,9 @@ MonoBehaviour:
   cardViewTemplate: {fileID: 1531675813161944992, guid: 9822c2cd0bb3642b3b87603b14bcbb53, type: 3}
   screenController: {fileID: 1706590075}
   TIMEOUT_PENALTY: 8
+  puntajePositivoColor: {r: 0, g: 0, b: 0, a: 0}
+  puntajeNegativoColor: {r: 0, g: 0, b: 0, a: 0}
+  displayPuntaje: {fileID: 0}
 --- !u!1 &1139332320
 GameObject:
   m_ObjectHideFlags: 0
@@ -6520,8 +6523,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281348334
-  m_fontColor: {r: 0.9339623, g: 0.18943575, b: 0.18943575, a: 1}
+    rgba: 4280032492
+  m_fontColor: {r: 0.9254902, g: 0.10980392, b: 0.10980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
