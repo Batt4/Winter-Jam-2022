@@ -53,6 +53,7 @@
               <e p="EventManager.cs" t="Include" />
               <e p="FollowersView.cs" t="Include" />
               <e p="GameController.cs" t="Include" />
+              <e p="NameGenerator.cs" t="Include" />
               <e p="TimerView.cs" t="Include" />
               <e p="Word.cs" t="Include" />
             </e>
