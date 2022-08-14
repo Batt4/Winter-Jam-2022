@@ -219,8 +219,8 @@ namespace WinterJam2022.Scripts.Presentation
             "Temer",
             "Tomar",
             "Valer",
-            "Visitar"
-            "Improvisar",
+            "Visitar",
+            "Improvisar"
         };
 
 
@@ -413,7 +413,6 @@ namespace WinterJam2022.Scripts.Presentation
                 new Word(WordType.SUBJECT, "Forro", Random.Range(1, 15), "rro"),
 
 
-
                 new Word(WordType.ADJECTIVE, "Salado", Random.Range(1, 15), "do"),
                 new Word(WordType.ADJECTIVE, "Dulce", Random.Range(1, 15), "ce"),
                 new Word(WordType.ADJECTIVE, "Amargo", Random.Range(1, 15), "go"),
@@ -537,7 +536,7 @@ namespace WinterJam2022.Scripts.Presentation
                 new Word(WordType.ADJECTIVE, "Devorador de BigMac", Random.Range(1, 15), "or"),
                 new Word(WordType.ADJECTIVE, "Cabeza de Rodilla", Random.Range(1, 15), "lla"),
                 new Word(WordType.ADJECTIVE, "Cabeza de Pija", Random.Range(1, 15), "ja"),
-                new Word(WordType.ADJECTIVE, "Forro", Random.Range(1, 15), "rro"),
+                new Word(WordType.ADJECTIVE, "Forro", Random.Range(1, 15), "rro")
 
             };
 

@@ -20,7 +20,7 @@ namespace WinterJam2022.Scripts.Verses.Domain
             new VerseContent("Seguimos llegando, aplastando %", WordType.SUBJECT),
             new VerseContent("Siempre suelto listo para % ", WordType.VERB),
             new VerseContent("Eso pasa por % mira como quedaste", WordType.VERB),
-            new VerseContent("Hechos picadillo, pedacitos, así quedó tu %", WordType.SUBJECT)
+            new VerseContent("Hechos picadillo, pedacitos, así quedó tu %", WordType.SUBJECT),
 
             new VerseContent("Si el % no me alcanza", WordType.SUBJECT),
             new VerseContent("Me va a sobar la %", WordType.SUBJECT),
@@ -43,7 +43,7 @@ namespace WinterJam2022.Scripts.Verses.Domain
             new VerseContent("Me voy a % en tu falso campeonato", WordType.VERB),
             new VerseContent("Tanto me quería arriba de la %", WordType.SUBJECT),
             new VerseContent("Hoy vengo a % y saben que lo maltrato", WordType.VERB),
-            new VerseContent("Tanto me quería porque se % la rima", WordType.VERB),
+            new VerseContent("Tanto me quería porque se % la rima", WordType.VERB)
 
         };
 
