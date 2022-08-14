@@ -22,7 +22,7 @@ namespace WinterJam2022.Scripts.Presentation
         readonly List<string> wordsVerb = new List<string>()
         {
             "Abrir",
-            "Rapeo"
+            "Rapeo",
             "Amar",
             "Asesinar",
             "Bastar",
