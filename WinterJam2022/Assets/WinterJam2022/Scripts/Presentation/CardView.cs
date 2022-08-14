@@ -22,6 +22,7 @@ namespace WinterJam2022.Scripts.Presentation
         readonly List<string> wordsVerb = new List<string>()
         {
             "Abrir",
+            "Rimar",
             "Rapeo",
             "Amar",
             "Asesinar",
@@ -219,6 +220,7 @@ namespace WinterJam2022.Scripts.Presentation
             "Tomar",
             "Valer",
             "Visitar"
+            "Improvisar",
         };
 
 
@@ -227,6 +229,7 @@ namespace WinterJam2022.Scripts.Presentation
             availableWords = new List<Word>
             {
                 new Word(WordType.SUBJECT, "Crema", Random.Range(1, 15), "ma"),
+                new Word(WordType.SUBJECT, "Tarima", Random.Range(1, 15), "ma"),
                 new Word(WordType.SUBJECT, "Rapero", Random.Range(1, 15), "ro"),
                 new Word(WordType.SUBJECT, "Explosión", Random.Range(1, 15), "sión"),
                 new Word(WordType.SUBJECT, "Navaja", Random.Range(1, 15), "ja"),
@@ -396,6 +399,20 @@ namespace WinterJam2022.Scripts.Presentation
                 new Word(WordType.SUBJECT, "Calor", Random.Range(1, 15), "lor"),
                 new Word(WordType.SUBJECT, "Bife", Random.Range(1, 15), "fe"),
                 new Word(WordType.SUBJECT, "Auriculares", Random.Range(1, 15), "res"),
+                new Word(WordType.SUBJECT, "Juguete", Random.Range(1, 15), "te"),
+                new Word(WordType.SUBJECT, "Culo", Random.Range(1, 15), "lo"),
+                new Word(WordType.SUBJECT, "Paja", Random.Range(1, 15), "ja"),
+                new Word(WordType.SUBJECT, "Fantasma", Random.Range(1, 15), "ma"),
+                new Word(WordType.SUBJECT, "Birra", Random.Range(1, 15), "rra"),
+                new Word(WordType.SUBJECT, "Gato", Random.Range(1, 15), "to"),
+                new Word(WordType.SUBJECT, "Gata", Random.Range(1, 15), "ta"),
+                new Word(WordType.SUBJECT, "Chamuyo", Random.Range(1, 15), "yo"),
+                new Word(WordType.SUBJECT, "Mierda", Random.Range(1, 15), "da"),
+                new Word(WordType.SUBJECT, "Ojete", Random.Range(1, 15), "te"),
+                new Word(WordType.SUBJECT, "Pija", Random.Range(1, 15), "ja"),
+                new Word(WordType.SUBJECT, "Forro", Random.Range(1, 15), "rro"),
+
+
 
                 new Word(WordType.ADJECTIVE, "Salado", Random.Range(1, 15), "do"),
                 new Word(WordType.ADJECTIVE, "Dulce", Random.Range(1, 15), "ce"),
@@ -504,12 +521,24 @@ namespace WinterJam2022.Scripts.Presentation
                 new Word(WordType.ADJECTIVE, "Aquellas", Random.Range(1, 15), "llas"),
                 new Word(WordType.ADJECTIVE, "Este", Random.Range(1, 15), "te"),
                 new Word(WordType.ADJECTIVE, "Nuestro", Random.Range(1, 15), "tro"),
-                new Word(WordType.ADJECTIVE, "Cuál", Random.Range(1, 15), "ál"),
-                new Word(WordType.ADJECTIVE, "Cuánto", Random.Range(1, 15), "to"),
-                new Word(WordType.ADJECTIVE, "Qué", Random.Range(1, 15), "qué"),
-                new Word(WordType.ADJECTIVE, "Cuánta", Random.Range(1, 15), "ta"),
-                new Word(WordType.ADJECTIVE, "Cuanto", Random.Range(1, 15), "to"),
-                new Word(WordType.ADJECTIVE, "Cuyo", Random.Range(1, 15), "yo")
+                new Word(WordType.ADJECTIVE, "Gordo", Random.Range(1, 15), "do"),
+                new Word(WordType.ADJECTIVE, "Gorda", Random.Range(1, 15), "da"),
+                new Word(WordType.ADJECTIVE, "Garca", Random.Range(1, 15), "ca"),
+                new Word(WordType.ADJECTIVE, "Cagon", Random.Range(1, 15), "on"),
+                new Word(WordType.ADJECTIVE, "Pillo", Random.Range(1, 15), "llo"),
+                new Word(WordType.ADJECTIVE, "Careta", Random.Range(1, 15), "ta"),
+                new Word(WordType.ADJECTIVE, "Fantasma", Random.Range(1, 15), "ma"),
+                new Word(WordType.ADJECTIVE, "Picante", Random.Range(1, 15), "te"),
+                new Word(WordType.ADJECTIVE, "Cheto", Random.Range(1, 15), "to"),
+                new Word(WordType.ADJECTIVE, "Banana", Random.Range(1, 15), "na"),
+                new Word(WordType.ADJECTIVE, "Ortiva", Random.Range(1, 15), "va"),
+                new Word(WordType.ADJECTIVE, "Chamuyero", Random.Range(1, 15), "ro"),
+                new Word(WordType.ADJECTIVE, "Limado", Random.Range(1, 15), "do"),
+                new Word(WordType.ADJECTIVE, "Devorador de BigMac", Random.Range(1, 15), "or"),
+                new Word(WordType.ADJECTIVE, "Cabeza de Rodilla", Random.Range(1, 15), "lla"),
+                new Word(WordType.ADJECTIVE, "Cabeza de Pija", Random.Range(1, 15), "ja"),
+                new Word(WordType.ADJECTIVE, "Forro", Random.Range(1, 15), "rro"),
+
             };
 
             foreach (string w in wordsVerb)
