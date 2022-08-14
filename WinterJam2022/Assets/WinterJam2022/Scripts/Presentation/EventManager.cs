@@ -153,6 +153,21 @@ namespace WinterJam2022.Scripts.Presentation
             }
         }
 
+        public void GetNewCardsFromDeck(int quantityOfCards)
+        {
+            for (int i = 0; i < quantityOfCards; i++) {
+                GetNewCardFromDeck();
+            }
+        }
+
+        public void ThrowCards()
+        {
+            foreach (Transform child in cardsContainer.transform) {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+
+
         void GetNewCardFromDeck() {
             if (round.currentPlayer == 1) Instantiate(cardViewTemplate, cardsContainer);
         }

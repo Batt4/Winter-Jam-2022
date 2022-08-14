@@ -55,11 +55,14 @@ public class RoundsController : MonoBehaviour
     public void StartRound() {
         Round round = currentRound;
         Debug.Log("INICIANDO ROUND: " + round.player1Followers + " | " + round.totalFollowers + " | " + round.quantityOfVerses + " | " + round.timerPlayer);
+        timerView.UpdateTimers(round.timerPlayer, 0.2f);
         gameController.NewRoundInformation(round);
         eventManager.NewRoundInformation(round);
         timerView.RestartTime(true);
         followersView.UpdateFollowers(round.player1Followers, round.totalFollowers);
         gameController.CreateVerse();
+        eventManager.ThrowCards();
+        eventManager.GetNewCardsFromDeck(round.initialCards);
     }
 
 }
