@@ -12,8 +12,8 @@ namespace WinterJam2022.Scripts.Presentation
         Slider slider;
         bool isPlayingPlayer;
         [SerializeField] EventManager eventManager;
-        [SerializeField] float basePlayerTime = 3f; // Mocked value.
-        [SerializeField] float baseEnemyTime = .2f; // Mocked value.
+        [SerializeField] float basePlayerTime; // Mocked value.
+        [SerializeField] float baseEnemyTime; // Mocked value.
 
 
         void Start() {
@@ -30,6 +30,11 @@ namespace WinterJam2022.Scripts.Presentation
                 float baseTime = this.isPlayingPlayer? this.basePlayerTime: this.baseEnemyTime;
                 slider.value = time / baseTime;
             }
+        }
+
+        public void UpdateTimers(float basePlayerTime, float baseEnemyTime) {
+            this.basePlayerTime = basePlayerTime;
+            this.baseEnemyTime = baseEnemyTime;
         }
 
         public void RestartTime(bool nextTurnIsForPlayer) {

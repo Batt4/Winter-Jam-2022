@@ -543,7 +543,6 @@ namespace WinterJam2022.Scripts.Presentation
             var word = availableWords[Random.Range(0, availableWords.Count)];
             return new Card(word);
         }
-
         void OnEnable() {
             eventManager = FindObjectOfType<EventManager>();
             OnCardPlayed += eventManager.PlayCard;
