@@ -8,6 +8,7 @@ public class Round
     public int player1Followers;
     public int totalFollowers;
     public int currentPlayer;
+    public bool finished;
 
     public Round(int player1Followers, int totalFollowers) {
         this.player1Followers = player1Followers;

@@ -17,11 +17,10 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] EventManager eventManager;
 
         private int currentVerse;
-        private int totalVerses;
+        [SerializeField] int totalVerses = 6;
         
         void OnEnable()
         {
-            totalVerses = 6; // Mock Total Verses
             CreateVerse();
         }
 

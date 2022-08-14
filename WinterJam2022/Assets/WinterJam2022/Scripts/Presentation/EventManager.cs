@@ -16,11 +16,11 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] RectTransform cardsContainer;
         [SerializeField] GameObject cardViewTemplate;
 
-        private const int TIMEOUT_PENALTY = 8;
+        [SerializeField] int TIMEOUT_PENALTY = 8;
         
         private void Start() 
         {
-            round = new Round(50, 100); // Mock Round
+            round = new Round(10, 20); // Mock Round
         }
 
         public void PlayCard(object sender, EventArgs args)
@@ -34,7 +34,8 @@ namespace WinterJam2022.Scripts.Presentation
             var card = ((CardPlayedArgs)args).Card;
             var cardObject = ((CardPlayedArgs)args).cardObject;
             bool cardWasOk = CurrentVerse.VerifyWord(card.Word);
-            UpdateRoundFollowers(card.Word.Points * (cardWasOk? 1: -1));
+
+            UpdateRoundFollowers(cardWasOk? card.Word.Points: -card.Word.Points);
             Destroy(cardObject);
             PassTurn();
             Debug.Log($"Card played: {card}");
@@ -43,29 +44,36 @@ namespace WinterJam2022.Scripts.Presentation
         public void SetCurrentVerse(Verse verse)
         {
             CurrentVerse = verse;
-            timerView.RestartTime();
+            timerView.RestartTime(IsThePlayerRound());
             Debug.Log($"Current verse: {verse}");
         }
 
         public void Timeout() {
-            UpdateRoundFollowers(TIMEOUT_PENALTY * (round.currentPlayer != 1? 1: -1));
+            if (IsThePlayerRound()) UpdateRoundFollowers(-TIMEOUT_PENALTY);
             PassTurn();
         }
 
-        public void PassTurn() {
+        void PassTurn() {
+            if (this.round.finished) {
+                return;
+            }
+
             round.PassTurn();
             GetNewCardFromDeck();
-            gameController.CreateVerse();
+            if (IsThePlayerRound()) gameController.CreateVerse();
+            if (!this.round.finished) {
+                timerView.RestartTime(IsThePlayerRound());
+            }
         }
 
         public void FinishRound()
         {
-            string winnerPlayer = "PLAYER";
-            if (this.round.player1Followers < this.round.totalFollowers / 2)
-                winnerPlayer = "ENEMY";
-            Debug.Log($"Finishing round. {winnerPlayer} is the Winner!");
             this.round.currentPlayer = 0;
-            //Application.Quit();
+            this.round.finished = true;
+            timerView.CloseTime();
+
+            string winnerPlayer = this.round.player1Followers < this.round.totalFollowers / 2? "ENEMY": "PLAYER";
+            Debug.Log($"Finishing round. {winnerPlayer} is the Winner!");
         }
 
         void GetNewCardFromDeck() {
@@ -75,9 +83,14 @@ namespace WinterJam2022.Scripts.Presentation
         void UpdateRoundFollowers(int points) {
             round.UpdateFollowers(points);
             followersView.UpdateFollowers(round.player1Followers, round.totalFollowers);
-            if (round.player1Followers >= round.totalFollowers) {
+            bool winLoseCondition = round.player1Followers <= 0 || round.player1Followers >= round.totalFollowers;
+            if (winLoseCondition) {
                 FinishRound();
             }
+        }
+
+        bool IsThePlayerRound() {
+            return this.round == null || this.round.currentPlayer == 1;
         }
     }
     

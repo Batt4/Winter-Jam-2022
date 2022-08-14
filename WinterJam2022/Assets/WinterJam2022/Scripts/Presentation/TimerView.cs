@@ -8,11 +8,13 @@ namespace WinterJam2022.Scripts.Presentation
     public class TimerView : MonoBehaviour
     {
         
+        float time;
         Slider slider;
+        bool isPlayingPlayer;
         [SerializeField] EventManager eventManager;
+        [SerializeField] float basePlayerTime = 3f; // Mocked value.
+        [SerializeField] float baseEnemyTime = .2f; // Mocked value.
 
-        private float time;
-        private float baseTime = 2f; // Mocked value.
 
         void Start() {
             slider = GetComponent<Slider>();
@@ -25,13 +27,19 @@ namespace WinterJam2022.Scripts.Presentation
                     time = 0f;
                     eventManager.Timeout();
                 }
+                float baseTime = this.isPlayingPlayer? this.basePlayerTime: this.baseEnemyTime;
                 slider.value = time / baseTime;
             }
         }
 
-        public void RestartTime() {
-            this.time = this.baseTime;
+        public void RestartTime(bool nextTurnIsForPlayer) {
+            this.isPlayingPlayer = nextTurnIsForPlayer;
+            this.time = this.isPlayingPlayer? this.basePlayerTime: this.baseEnemyTime;
             Debug.Log($"Timer was restarted to {time}");
+        }
+
+        public void CloseTime() {
+            this.time = 0f;
         }
 
     }
