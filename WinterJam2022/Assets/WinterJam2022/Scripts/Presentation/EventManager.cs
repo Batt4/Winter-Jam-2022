@@ -20,7 +20,11 @@ namespace WinterJam2022.Scripts.Presentation
         [SerializeField] int TIMEOUT_PENALTY = 8;
 
         Word lastCorrectWord = new Word(WordType.VERB, "",0,"");
-        
+
+        [SerializeField] Color puntajePositivoColor;
+        [SerializeField] Color puntajeNegativoColor;
+
+
         void Start() 
         {
         }
@@ -64,6 +68,26 @@ namespace WinterJam2022.Scripts.Presentation
                 UpdateRoundFollowers(rhymeScore + card.Word.Points * scoreMultiplier);
                 round.AddToCombo();
                 lastCorrectWord = card.Word;
+
+                /////////////////
+                TMPro.TextMeshProUGUI displayPuntaje = currentVerse.gameObject.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[1];
+                TMPro.TextMeshProUGUI displayPuntajeSombra = currentVerse.gameObject.GetComponentsInChildren<TMPro.TextMeshProUGUI>()[2];
+                var puntaje = rhymeScore + card.Word.Points * scoreMultiplier;
+                if ((rhymeScore + card.Word.Points * scoreMultiplier) > 0)
+                {
+                    displayPuntaje.color = puntajePositivoColor;
+                    displayPuntaje.text = "+" + puntaje.ToString();
+                    displayPuntajeSombra.text = "+" + puntaje.ToString();
+                }
+                else
+                {
+                    displayPuntaje.color = puntajeNegativoColor;
+                    displayPuntaje.text = "-" + puntaje.ToString();
+                    displayPuntajeSombra.text = "-" + puntaje.ToString();
+                }
+                /////////////////
+
+
             }
             else
             {

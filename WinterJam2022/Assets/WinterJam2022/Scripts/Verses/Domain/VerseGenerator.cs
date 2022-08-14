@@ -19,7 +19,7 @@ namespace WinterJam2022.Scripts.Verses.Domain
             new VerseContent("Mira como te % la cabeza", WordType.VERB),
             new VerseContent("Seguimos llegando, aplastando %", WordType.SUBJECT),
             new VerseContent("Siempre suelto listo para % ", WordType.VERB),
-            new VerseContent("Eso pasa por % mira como quedaste", WordType.ADJECTIVE),
+            new VerseContent("Eso pasa por % mira como quedaste", WordType.VERB),
             new VerseContent("Hechos picadillo, pedacitos, así quedó tu %", WordType.SUBJECT)
         };
 
