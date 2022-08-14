@@ -23,7 +23,7 @@ public class RoundsController : MonoBehaviour
     [SerializeField] FollowersView followersView;
 
     void Start() {
-        this.initialRound = firstRound;
+        this.initialRound = new Round(firstRound);
     }
 
     void OnEnable() {
@@ -36,6 +36,7 @@ public class RoundsController : MonoBehaviour
         nextRound.totalFollowers = CalculateNewLevelValue(initialRound.totalFollowers, totalFollowersIncrement);
         nextRound.timerPlayer = CalculateNewLevelValue(initialRound.timerPlayer, playerTimerIncrement);
         nextRound.quantityOfVerses = CalculateNewLevelValue(initialRound.quantityOfVerses, versesIncrement);
+        nextRound.initialCards = initialRound.initialCards;
         this.currentRound = nextRound;
     }
 
@@ -49,6 +50,7 @@ public class RoundsController : MonoBehaviour
 
     public void ResetLevels() {
         currentRoundId = 1;
+        if (initialRound == null) initialRound = new Round(firstRound);
         this.currentRound = new Round(initialRound);
     }
 

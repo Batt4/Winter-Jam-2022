@@ -31,7 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9125972650424320243}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.13269597, b: 0, a: 1}
+  m_Color: {r: 0.28453502, g: 0.8980392, b: 0.07843137, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -104,7 +104,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9125972650424320243}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20.923}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -239,7 +239,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9125972650424320243}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20.923}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -374,7 +374,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9125972650424320243}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -509,10 +509,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3570499524299536700}
   - {fileID: 9125972650417138753}
   - {fileID: 8024102783639136242}
   - {fileID: 9035806988175482578}
+  - {fileID: 3570499524299536700}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -542,6 +542,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 9125972650417138782}
+  puntajePositivoColor: {r: 1, g: 0.69803923, b: 0, a: 1}
+  puntajeNegativoColor: {r: 0.9254902, g: 0.10980392, b: 0.10980392, a: 1}
+  displayPuntaje: {fileID: 4996337412614709137}
+  displayPuntajeSombra: {fileID: 7706504765833546971}
+  overlay: {fileID: 9138133015785106841}
+  verbColor: {r: 0.8018868, g: 0.19290671, b: 0.19290671, a: 0}
+  subjectColor: {r: 0.2874385, g: 0.7169812, b: 0.1792453, a: 0}
+  adjectiveColor: {r: 0.20754717, g: 0.28627816, b: 0.8301887, a: 0}
 --- !u!114 &6764593831837112849
 MonoBehaviour:
   m_ObjectHideFlags: 0
